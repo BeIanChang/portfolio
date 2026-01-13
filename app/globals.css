@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --page-gradient: radial-gradient(circle at top left, rgba(8, 173, 195, 0.28), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(0, 85, 255, 0.3), transparent 50%),
+    linear-gradient(120deg, #e6f7f6 0%, #e3f4ff 55%, #ecfbff 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: var(--page-gradient);
+  color: #0f172a;
+  min-height: 100vh;
+}
+
+aside {
+  background: linear-gradient(180deg, #111318 0%, #0b0e12 100%);
+}
+
+.section-shell {
+  @apply mx-auto w-full max-w-6xl px-6;
+}
+
+.surface-panel {
+  @apply rounded-[32px] border border-ink/10 bg-white/70 p-8 shadow-glow backdrop-blur;
+}
+
+.reveal-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  animation-delay: 0.3s;
+}
