@@ -11,8 +11,8 @@ export function SubmissionNotice() {
   }
 
   return (
-    <div className="rounded-2xl border border-ink/10 bg-white/70 px-3 py-2 text-xs text-ink/70">
+    <p className="text-xs text-emerald-700">
       Thanks! Your message was sent.
-    </div>
+    </p>
   );
 }
