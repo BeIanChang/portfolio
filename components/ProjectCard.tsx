@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Tag } from './Tag';
 
 type ProjectLink = {
-  label: 'Live' | 'GitHub' | 'Case Study';
+  label: 'Live' | 'GitHub' | 'Case Study' | string;
   href: string;
 };
 
