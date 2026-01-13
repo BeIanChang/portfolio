@@ -1,9 +1,11 @@
+import Link from 'next/link';
 import { SectionHeading } from '../../components/SectionHeading';
 
 const timeline = [
   {
     role: 'Software Engineering Intern',
-    company: 'Waren AI',
+    company: 'Wanren AI',
+    companyUrl: 'https://www.wanrenai.com/',
     period: 'Dec 2024 - Jun 2025 · Beijing, China',
     highlights: [
       'Built an end-to-end healthcare platform with Android client and React portal, exposing FastAPI services.',
@@ -14,6 +16,7 @@ const timeline = [
   {
     role: 'Software Engineering Intern',
     company: 'Lalamove',
+    companyUrl: 'https://www.lalamove.com/en-hk/',
     period: 'Dec 2023 - Apr 2024 · Beijing, China',
     highlights: [
       'Developed an edge benchmarking system in Kotlin with Android SDK pipelines.',
@@ -38,7 +41,16 @@ export default function ExperiencePage() {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <h3 className="font-serif text-2xl text-ink">{item.role}</h3>
-                <p className="text-ink/70">{item.company}</p>
+                {item.companyUrl ? (
+                  <Link
+                    href={item.companyUrl}
+                    className="text-ink/70 hover:text-ink"
+                  >
+                    {item.company}
+                  </Link>
+                ) : (
+                  <p className="text-ink/70">{item.company}</p>
+                )}
               </div>
               <p className="text-sm uppercase tracking-[0.2em] text-ink/50">{item.period}</p>
             </div>
