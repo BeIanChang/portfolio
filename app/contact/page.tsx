@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
 import { SectionHeading } from '../../components/SectionHeading';
 import { SubmissionNotice } from '../../components/SubmissionNotice';
 
@@ -95,7 +96,9 @@ export default function ContactPage() {
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="bot-field" />
           <p className="text-[10px] uppercase tracking-[0.3em] text-ink/50">Send a note</p>
-          <SubmissionNotice />
+          <Suspense fallback={null}>
+            <SubmissionNotice />
+          </Suspense>
           <div className="space-y-2">
             <label className="block text-[10px] uppercase tracking-[0.3em] text-ink/50" htmlFor="name">
               Name
