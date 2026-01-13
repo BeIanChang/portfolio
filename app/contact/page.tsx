@@ -58,7 +58,13 @@ const contactLinks = [
   }
 ];
 
-export default function ContactPage() {
+export default function ContactPage({
+  searchParams
+}: {
+  searchParams?: { submitted?: string };
+}) {
+  const isSubmitted = searchParams?.submitted === 'true';
+
   return (
     <div className="space-y-12">
       <SectionHeading
@@ -94,6 +100,11 @@ export default function ContactPage() {
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="bot-field" />
           <p className="text-[10px] uppercase tracking-[0.3em] text-ink/50">Send a note</p>
+          {isSubmitted ? (
+            <div className="rounded-2xl border border-ink/10 bg-white/70 px-3 py-2 text-xs text-ink/70">
+              Thanks! Your message was sent.
+            </div>
+          ) : null}
           <div className="space-y-2">
             <label className="block text-[10px] uppercase tracking-[0.3em] text-ink/50" htmlFor="name">
               Name
