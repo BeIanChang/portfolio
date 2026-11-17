@@ -3,41 +3,135 @@
 @tailwind utilities;
 
 :root {
-  --page-gradient: radial-gradient(circle at top left, rgba(8, 173, 195, 0.28), transparent 55%),
-    radial-gradient(circle at 80% 20%, rgba(0, 85, 255, 0.3), transparent 50%),
-    linear-gradient(120deg, #e6f7f6 0%, #e3f4ff 55%, #ecfbff 100%);
+  /* Operator Dark — graphite surface, mint signal. OKLCH-derived. */
+  --bg: oklch(16.5% 0.012 255);          /* ~#0b0d11 */
+  --surface: oklch(19.5% 0.013 255);     /* ~#12151a */
+  --raised: oklch(23% 0.014 255);        /* ~#1a1e24 */
+  --ink: oklch(95% 0.005 255);           /* ~#eceef1 */
+  --dim: oklch(78% 0.01 255);            /* secondary text, >9:1 on bg */
+  --mute: oklch(64% 0.012 255);          /* meta text, >5:1 on bg */
+  --mint: oklch(86% 0.145 163);          /* ~#4fe3a2 */
+  --mint-dim: oklch(86% 0.145 163 / 0.14);
+  --line: oklch(100% 0 0 / 0.09);
+  --line-strong: oklch(100% 0 0 / 0.18);
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-image: var(--page-gradient);
-  color: #0f172a;
-  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-feature-settings: 'ss01' on, 'cv05' on;
+  -webkit-font-smoothing: antialiased;
 }
 
-aside {
-  background: linear-gradient(180deg, #111318 0%, #0b0e12 100%);
+::selection {
+  background: var(--mint);
+  color: var(--bg);
 }
 
-.section-shell {
-  @apply mx-auto w-full max-w-6xl px-6;
+h1, h2, h3 {
+  text-wrap: balance;
 }
 
-.surface-panel {
-  @apply rounded-[32px] border border-ink/10 bg-white/70 p-8 shadow-glow backdrop-blur;
+p {
+  text-wrap: pretty;
 }
 
-.reveal-delay-1 {
-  animation-delay: 0.1s;
+:focus-visible {
+  outline: 1.5px solid var(--mint);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-.reveal-delay-2 {
-  animation-delay: 0.2s;
+/* --- primitives ------------------------------------------------------ */
+
+.shell {
+  @apply mx-auto w-full max-w-shell px-6 md:px-10;
 }
 
-.reveal-delay-3 {
-  animation-delay: 0.3s;
+.rule {
+  border-top: 1px solid var(--line);
+}
+
+.mono-label {
+  @apply font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-mute;
+}
+
+.link-quiet {
+  @apply text-dim transition-colors duration-200 hover:text-ink;
+}
+
+.link-mint {
+  color: var(--mint);
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.link-mint:hover {
+  background-size: 100% 1px;
+}
+
+/* --- hero choreography (default-visible; motion is enhancement only) -- */
+
+.hero-rise {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-rise {
+    animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-rise-2 { animation-delay: 0.08s; }
+  .hero-rise-3 { animation-delay: 0.16s; }
+  .hero-rise-4 { animation-delay: 0.24s; }
+
+  /* starts readable (not opacity 0) so paused renderers never show a blank hero */
+  @keyframes hero-rise {
+    from {
+      opacity: 0.4;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .signal-dash {
+    stroke-dasharray: 6 10;
+    animation: signal-flow 2.8s linear infinite;
+  }
+
+  @keyframes signal-flow {
+    to {
+      stroke-dashoffset: -64;
+    }
+  }
+
+  .signal-pulse {
+    animation: signal-pulse 2.8s ease-in-out infinite;
+  }
+
+  @keyframes signal-pulse {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

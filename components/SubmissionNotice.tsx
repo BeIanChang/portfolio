@@ -11,8 +11,8 @@ export function SubmissionNotice() {
   }
 
   return (
-    <p className="text-xs text-emerald-700">
-      Thanks! Your message was sent.
+    <p className="font-mono text-xs text-mint">
+      Thanks — your message was sent.
     </p>
   );
 }
