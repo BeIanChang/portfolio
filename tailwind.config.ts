@@ -18,15 +18,17 @@ const config: Config = {
         serif: ['var(--font-fraunces)', 'serif']
       },
       boxShadow: {
-        glow: '0 0 0 1px rgba(15, 23, 42, 0.08), 0 20px 60px -40px rgba(15, 23, 42, 0.45)'
+        glow: '0 0 0 1px rgba(15, 23, 42, 0.08), 0 20px 60px -40px rgba(15, 23, 42, 0.45)',
+        'glow-lift': '0 0 0 1px rgba(15, 23, 42, 0.1), 0 32px 70px -36px rgba(15, 23, 42, 0.55)'
       },
       keyframes: {
         floaty: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-8px)' }
         },
+        /* starts readable (not opacity 0) so paused/headless renderers never show blank content */
         reveal: {
-          '0%': { opacity: '0', transform: 'translateY(14px)' },
+          '0%': { opacity: '0.35', transform: 'translateY(14px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' }
         }
       },

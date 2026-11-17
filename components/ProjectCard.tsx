@@ -15,7 +15,7 @@ type ProjectCardProps = {
 
 export function ProjectCard({ title, description, tags, links }: ProjectCardProps) {
   return (
-    <div className="flex h-full flex-col justify-between rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-glow backdrop-blur">
+    <div className="flex h-full flex-col justify-between rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-glow backdrop-blur transition-all duration-300 ease-out motion-safe:hover:-translate-y-1.5 hover:shadow-glow-lift hover:border-ink/20">
       <div className="space-y-4">
         <h3 className="font-serif text-2xl text-ink">{title}</h3>
         <p className="text-ink/70">{description}</p>
@@ -27,7 +27,11 @@ export function ProjectCard({ title, description, tags, links }: ProjectCardProp
       </div>
       <div className="mt-6 flex flex-wrap gap-4 text-sm uppercase tracking-[0.2em] text-ink/70">
         {links.map((link) => (
-          <Link key={link.label} href={link.href} className="hover:text-ink">
+          <Link
+            key={link.label}
+            href={link.href}
+            className="transition-colors duration-200 hover:text-ink underline-offset-4 hover:underline"
+          >
             {link.label}
           </Link>
         ))}
