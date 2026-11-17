@@ -1,15 +1,15 @@
 type SectionHeadingProps = {
+  eyebrow: string;
   title: string;
-  meta?: string;
+  subtitle?: string;
 };
 
-export function SectionHeading({ title, meta }: SectionHeadingProps) {
+export function SectionHeading({ eyebrow, title, subtitle }: SectionHeadingProps) {
   return (
-    <div className="rule flex items-baseline justify-between gap-6 pt-5">
-      <h2 className="text-xl font-semibold tracking-tight text-ink md:text-2xl">
-        {title}
-      </h2>
-      {meta ? <span className="mono-label shrink-0">{meta}</span> : null}
+    <div className="space-y-3">
+      <p className="text-xs uppercase tracking-[0.3em] text-ink/50">{eyebrow}</p>
+      <h2 className="font-serif text-3xl text-ink md:text-4xl">{title}</h2>
+      {subtitle ? <p className="max-w-2xl text-ink/70">{subtitle}</p> : null}
     </div>
   );
 }

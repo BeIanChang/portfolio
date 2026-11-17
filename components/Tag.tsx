@@ -1,7 +1,11 @@
-export function Tag({ children }: { children: React.ReactNode }) {
+type TagProps = {
+  label: string;
+};
+
+export function Tag({ label }: TagProps) {
   return (
-    <span className="rounded-[3px] border border-line px-1.5 py-0.5 font-mono text-[0.6875rem] text-mute">
-      {children}
+    <span className="rounded-full border border-ink/15 px-3 py-1 text-xs uppercase tracking-[0.2em] text-ink/70">
+      {label}
     </span>
   );
 }

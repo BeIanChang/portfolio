@@ -8,25 +8,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: 'var(--bg)',
-        surface: 'var(--surface)',
-        raised: 'var(--raised)',
-        ink: 'var(--ink)',
-        dim: 'var(--dim)',
-        mute: 'var(--mute)',
-        mint: 'var(--mint)',
-        line: 'var(--line)',
-        'line-strong': 'var(--line-strong)'
+        ink: '#0f172a',
+        ember: '#f97316',
+        lagoon: '#22d3ee',
+        parchment: '#f8f4eb'
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-jetbrains)', 'ui-monospace', 'monospace']
+        sans: ['var(--font-space-grotesk)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-fraunces)', 'serif']
       },
-      maxWidth: {
-        shell: '72rem'
+      boxShadow: {
+        glow: '0 0 0 1px rgba(15, 23, 42, 0.08), 0 20px 60px -40px rgba(15, 23, 42, 0.45)'
       },
-      transitionTimingFunction: {
-        'out-quint': 'cubic-bezier(0.22, 1, 0.36, 1)'
+      keyframes: {
+        floaty: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-8px)' }
+        },
+        reveal: {
+          '0%': { opacity: '0', transform: 'translateY(14px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        }
+      },
+      animation: {
+        floaty: 'floaty 8s ease-in-out infinite',
+        reveal: 'reveal 0.8s ease-out both'
       }
     }
   },
